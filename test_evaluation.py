@@ -10,7 +10,8 @@ class SignedComparisonTests(unittest.TestCase):
     def output_for(self, scores):
         output = io.StringIO()
         with patch.object(DiagnosticModel, 'train_and_evaluate', return_value=scores), redirect_stdout(output):
-            runpy.run_path(str(Path(__file__).with_name('tuning_analysis.py')), run_name='__main__')
+            with patch('sys.argv', ['tuning_analysis.py', '--quick']):
+                runpy.run_path(str(Path(__file__).with_name('tuning_analysis.py')), run_name='__main__')
         return output.getvalue()
 
     def test_lower_accuracy_is_reported_as_negative(self):
