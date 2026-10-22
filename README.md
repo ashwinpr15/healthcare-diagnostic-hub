@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img src="assets/banner-light.svg" alt="Synthetic classification benchmark" width="100%">
+</picture>
+
 # Synthetic classification benchmark
 
 Educational comparison of two Random Forest configurations using generated structured records. The five features are Glucose, BMI, Age, BloodPressure, and Insulin. A noisy arithmetic rule creates the binary label.
