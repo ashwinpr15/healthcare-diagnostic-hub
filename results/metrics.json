@@ -1,0 +1,60 @@
+{
+  "baseline": {
+    "accuracy": 0.7925,
+    "precision": 0.8010471204188482,
+    "recall": 0.7727272727272727,
+    "f1": 0.7866323907455013,
+    "roc_auc": 0.881063106310631,
+    "cv_accuracy_mean": 0.788125,
+    "cv_accuracy_std": 0.01523257200869241,
+    "confusion_matrix": [
+      [
+        164,
+        38
+      ],
+      [
+        45,
+        153
+      ]
+    ],
+    "feature_importance": {
+      "Glucose": 0.6504,
+      "BMI": 0.2215,
+      "Age": 0.0499,
+      "BloodPressure": 0.0398,
+      "Insulin": 0.0384
+    }
+  },
+  "comparison": {
+    "accuracy": 0.7625,
+    "precision": 0.7464114832535885,
+    "recall": 0.7878787878787878,
+    "f1": 0.7665847665847666,
+    "roc_auc": 0.8582108210821082,
+    "cv_accuracy_mean": 0.7749999999999999,
+    "cv_accuracy_std": 0.017897276329095442,
+    "confusion_matrix": [
+      [
+        149,
+        53
+      ],
+      [
+        42,
+        156
+      ]
+    ],
+    "feature_importance": {
+      "Glucose": 0.4711,
+      "BMI": 0.2117,
+      "Age": 0.1008,
+      "BloodPressure": 0.109,
+      "Insulin": 0.1075
+    }
+  },
+  "data": {
+    "samples": 2000,
+    "positive_rate": 0.4955,
+    "test_size": 0.2,
+    "seed": 42
+  }
+}
