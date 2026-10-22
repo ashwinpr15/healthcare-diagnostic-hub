@@ -11,7 +11,7 @@ class DiagnosticModel:
             random_state=42
         )
 
-        # Tuned: Optimized parameters for higher complexity and better fit
+        # Comparison: manually specified higher-complexity configuration; not a tuning search
         self.tuned_model = RandomForestClassifier(
             n_estimators=300, 
             max_depth=None, 
@@ -22,7 +22,7 @@ class DiagnosticModel:
 
     def train_and_evaluate(self, X, y):
         # Split data
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
         # 1. Train Baseline
         self.base_model.fit(X_train, y_train)

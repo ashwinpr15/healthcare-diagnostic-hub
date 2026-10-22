@@ -1,40 +1,32 @@
-# Healthcare Diagnostic Hub 🏥
+# Synthetic classification benchmark
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-Random%20Forest-orange)
-![Status](https://img.shields.io/badge/Status-Prototype-yellow)
+Educational comparison of two Random Forest configurations using generated structured records. The five features are Glucose, BMI, Age, BloodPressure, and Insulin. A noisy arithmetic rule creates the binary label.
 
-A predictive analytics prototype designed to assist early disease risk identification using structured patient data.  
-This project demonstrates **model optimization and performance benchmarking** using Random Forest classifiers on synthetic medical records.
+## Implementation
 
-## ⚡ Business Objective
-* **Goal:** Improve early disease detection accuracy to support clinical decision-making.
-* **Metric:** Reduction of false negatives through hyperparameter tuning.
-* **Impact:** Demonstrated a measurable performance gain over baseline heuristics.
+- `src/data_gen.py`: creates synthetic features and constructed labels with seed 42.
+- `src/model.py`: compares a depth-limited 100-tree model with a manually configured 300-tree model on one stratified 80/20 split.
+- `tuning_analysis.py`: prints accuracy and signed relative change. A comparison can be negative; improvement is not assumed.
 
-## 🧠 Technical Approach
-* **Data:** Synthetic dataset mimicking the feature distribution of the Pima Indians Diabetes dataset.
-* **Model:** Random Forest Classifier (Ensemble Learning).
-* **Optimization:** Comparison of a standard baseline vs. a hyperparameter-tuned model.
+## Run from the repository root
 
-## 📊 Performance Summary
-Statistical benchmarking was conducted on a held-out test set.
+```sh
+python -m venv .venv
+# Activate the environment for your operating system.
+python -m pip install -r requirements.txt
+python tuning_analysis.py
+```
 
-| Model Configuration | Accuracy |
-| :--- | :--- |
-| Baseline Random Forest | ~71% |
-| **Optimized Random Forest** | **~86%** |
-| **Relative Improvement** | **~21%** |
+## Evaluation scope
 
-*> **Note:** "Relative Improvement" is calculated as `(Optimized - Baseline) / Baseline`. Results confirm that parameter tuning significantly enhances predictive power.*
+These are fixed configurations, not the result of a hyperparameter search. Accuracy on constructed labels does not measure disease prediction in patients. The code includes no real Pima data, cancer model, SMOTE, explainability, false-negative comparison, or clinical validation.
 
-## 📂 Repository Structure
-* `src/model.py`: Random Forest training logic and configuration.
-* `src/data_gen.py`: Synthetic patient data generator.
-* `tuning_analysis.py`: Benchmarking script to validate accuracy gains.
+For a stronger future experiment, select parameters using cross-validation on training data, reserve an untouched test set, report precision/recall and confusion matrices, and compare a simple baseline. Record exact package versions with results. This is a learning demonstration, not a diagnostic tool.
 
-## 🚀 How to Run
-1. Install dependencies:
-   `pip install -r requirements.txt`
-2. Run the benchmarking script:
-   `python tuning_analysis.py`
+## Targeted checks
+
+Run `python test_evaluation.py` from the repository root after installing dependencies.
+
+## License
+
+Released under the [MIT License](LICENSE).
